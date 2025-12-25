@@ -75,8 +75,7 @@ El archivo `config.json` permite personalizar el comportamiento del extractor:
 {
   "section_start_marker": "HISTORIAL CURSOS ClÍNICOS",
   "section_end_marker": "Constantes",
-  "output_directory": "output",
-  "encoding": "utf-8"
+  "output_directory": "output"
 }
 ```
 
@@ -85,7 +84,6 @@ El archivo `config.json` permite personalizar el comportamiento del extractor:
 - **section_start_marker**: Texto que marca el inicio de la sección a extraer
 - **section_end_marker**: Texto que marca el final de la sección a extraer
 - **output_directory**: Directorio donde se guardarán los archivos XML generados
-- **encoding**: Codificación de caracteres para los archivos de salida
 
 ## Formato de salida XML
 

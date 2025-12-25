@@ -9,6 +9,7 @@ import os
 import sys
 import argparse
 import json
+import shutil
 from pathlib import Path
 from typing import List, Dict, Any, Tuple, Optional
 import logging
@@ -74,7 +75,6 @@ class PDFTableExtractor:
             logger.error(f"Error removing PDF protection: {e}")
             # If no protection or other issue, try to copy the file
             try:
-                import shutil
                 shutil.copy2(pdf_path, output_path)
                 logger.info("PDF copied (may not have been protected)")
                 return True
@@ -151,10 +151,11 @@ class PDFTableExtractor:
                                 cleaned_row = [str(cell).strip() if cell else "" for cell in row]
                                 cleaned_table.append(cleaned_row)
                         
-                        if cleaned_table:
+                        if cleaned_table and len(cleaned_table) > 0:
                             # Check if this might be a continuation of a previous table
                             # by looking at the number of columns
-                            if current_table_rows and len(cleaned_table[0]) == len(current_table_rows[-1]):
+                            if (current_table_rows and len(current_table_rows) > 0 and 
+                                len(cleaned_table[0]) == len(current_table_rows[-1])):
                                 # Likely a continuation - append rows
                                 logger.info(f"Page {page_num + 1}: Continuing table from previous page")
                                 current_table_rows.extend(cleaned_table)
