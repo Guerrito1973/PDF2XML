@@ -63,10 +63,45 @@ python pdf2xml.py --output resultados archivo.pdf
 # Activar modo verbose para más información
 python pdf2xml.py --verbose archivo.pdf
 
+# Guardar logs en un archivo para debugging
+python pdf2xml.py --log-file proceso.log archivo.pdf
+
+# Combinar opciones: verbose + guardar logs
+python pdf2xml.py --verbose --log-file debug.log archivo.pdf
+
 # Ver ayuda completa
 python pdf2xml.py --help
 ```
 
+## Logs y Debugging
+
+### ¿Dónde están los logs?
+
+Por defecto, los logs se muestran en la **salida de consola** (stdout/stderr) cuando ejecutas el script. 
+
+Para guardar los logs en un archivo para revisión posterior:
+
+```bash
+# Guardar logs en un archivo específico
+python pdf2xml.py --log-file proceso.log archivo.pdf
+
+# Modo verbose con archivo de logs (recomendado para debugging)
+python pdf2xml.py --verbose --log-file debug.log archivo.pdf
+```
+
+Los archivos de log incluyen:
+- Timestamp de cada operación
+- Nivel de log (INFO, WARNING, ERROR, DEBUG)
+- Mensajes detallados sobre el procesamiento
+- Información sobre páginas procesadas y tablas extraídas
+- Errores y excepciones completas
+
+### Niveles de logging
+
+- **Normal**: Muestra operaciones principales (INFO y superior)
+- **Verbose** (`--verbose`): Muestra información detallada de debugging (DEBUG y superior)
+
+```
 ## Configuración
 
 El archivo `config.json` permite personalizar el comportamiento del extractor:

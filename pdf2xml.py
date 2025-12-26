@@ -345,6 +345,9 @@ Examples:
   
   # Use custom configuration
   python pdf2xml.py --config custom_config.json input.pdf
+  
+  # Enable verbose logging and save to file
+  python pdf2xml.py --verbose --log-file processing.log input.pdf
         """
     )
     
@@ -376,10 +379,24 @@ Examples:
         help='Enable verbose logging'
     )
     
+    parser.add_argument(
+        '--log-file',
+        help='Save logs to specified file (in addition to console output)'
+    )
+    
     args = parser.parse_args()
+    
+    # Configure file logging if requested
+    if args.log_file:
+        file_handler = logging.FileHandler(args.log_file, mode='a', encoding='utf-8')
+        file_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+        logger.addHandler(file_handler)
+        logging.getLogger().addHandler(file_handler)
+        logger.info(f"Logging to file: {args.log_file}")
     
     if args.verbose:
         logger.setLevel(logging.DEBUG)
+        logging.getLogger().setLevel(logging.DEBUG)
     
     # Check if input is provided
     if not args.input and not args.directory:

@@ -41,6 +41,20 @@ Los archivos XML generados se guardarán en el directorio `output/` por defecto.
 
 Generated XML files will be saved in the `output/` directory by default.
 
+## Logs y Debugging / Logs and Debugging
+
+### ¿Dónde están los logs? / Where are the logs?
+
+**Por defecto** / **By default**: Los logs se muestran en la consola / Logs are displayed in the console
+
+**Para guardar en archivo** / **To save to file**:
+```bash
+python pdf2xml.py --log-file proceso.log archivo.pdf
+
+# Modo verbose (recomendado para debugging) / Verbose mode (recommended for debugging)
+python pdf2xml.py --verbose --log-file debug.log archivo.pdf
+```
+
 ## Solución de Problemas Comunes / Common Troubleshooting
 
 ### Error: No se encuentran los marcadores

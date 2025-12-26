@@ -34,7 +34,7 @@ temp_*.pdf
 .vscode/
 .idea/
 *.swp
-*.swo
+.*.swo
 *~
 
 # OS
@@ -43,3 +43,4 @@ Thumbs.db
 
 # Logs
 *.log
+logs/
