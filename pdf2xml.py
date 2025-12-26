@@ -390,12 +390,10 @@ Examples:
     if args.log_file:
         file_handler = logging.FileHandler(args.log_file, mode='a', encoding='utf-8')
         file_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
-        logger.addHandler(file_handler)
         logging.getLogger().addHandler(file_handler)
         logger.info(f"Logging to file: {args.log_file}")
     
     if args.verbose:
-        logger.setLevel(logging.DEBUG)
         logging.getLogger().setLevel(logging.DEBUG)
     
     # Check if input is provided
